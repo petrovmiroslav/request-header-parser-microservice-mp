@@ -24,12 +24,10 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 function HeaderParser(req, res) {
-  console.log(req);
   const result = {"ipaddress": req.headers["x-forwarded-for"],
                   "language": req.headers["accept-language"],
                   "software": req.headers["user-agent"]
                  }
-  
   res.json(result);
 }
 app.get("/api/whoami", HeaderParser)
